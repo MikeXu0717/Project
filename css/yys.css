@@ -1,0 +1,555 @@
+/*
+思路：
+大局观
+HTML写结构、css样式
+HTML先布局再写内容
+又外到内
+*/
+/*最外层的容器开始*/
+.yys {
+    width: 100%;
+    max-width: 1920px;
+    min-width: 1280px;
+}
+
+/*最外层的容器结束*/
+/*头部样式开始*/
+.header {
+    position: relative;
+    width: 100%;
+    height: 55px;
+    /*一行文字垂直居中*/
+    line-height: 55px;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 179px;
+    height: 54px;
+    background-color: #cf1132;
+    font-size: 12px;
+    color: #fff;
+}
+
+.sale {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 138px;
+    border-left: 1px solid #dadada;
+    height: 54px;
+    color: #333;
+    font-size: 12px;
+    /*修改光标为小手*/
+    cursor: pointer;
+}
+
+.sale:hover {
+    color: #bc2e2e;
+    border-bottom: 1px solid #bc2e2e;
+    background-color: #f3f3f3;
+}
+
+/*头部样式结束*/
+/*banner样式开始*/
+.banner {
+    position: relative;
+    top: -10px;
+    width: 100%;
+    height: 784px;
+}
+
+.nav {
+    z-index: 999;
+    /*相对定位  相对于自己原位置不移动
+    固定定位  相对于浏览器窗口的位置 0 0*/
+    /*
+    有粘性定位的元素的父元素不能设置overflow:hidden|auto|scroll;
+    */
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: url("../images/nav_back_bg_fd2505e.jpg") no-repeat center top;
+}
+
+.nav-wrap {
+    position: relative;
+    margin: 0 auto;
+    width: 1180px;
+    height: 70px;
+    line-height: 70px;
+}
+
+.nav-wrap li {
+    position: relative;
+    float: left;
+    width: 84.28px;
+    font-size: 14px;
+}
+
+.nav-wrap li:not(.nav-active)::after {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    content: "";
+    width: 1px;
+    height: 10px;
+    background-color: #fff;
+}
+
+.nav-wrap li:hover::after {
+    content: "";
+    background-color: transparent;
+}
+
+.nav-wrap a {
+    color: #fff;
+}
+
+.nav-active {
+    background: url("../images/nav_bg1_d44f09d.jpg") no-repeat;
+}
+
+.nav-active > a {
+    color: #000;
+}
+
+.nav-wrap li:hover {
+    background: url("../images/nav_bg1_d44f09d.jpg") no-repeat;
+}
+
+/*鼠标悬停到li上 它的儿子a  字体颜色变为黑色*/
+.nav-wrap li:hover > a {
+    color: #000;
+}
+
+/*放大镜*/
+.search {
+    /*相对于nav-wrap定位*/
+    position: absolute;
+    top: 25px;
+    right: -35px;
+    width: 18px;
+    height: 19px;
+    background: url("../images/search_b180dd5.png") no-repeat;
+    transition: all .3s;
+}
+
+.search:hover {
+    transform: rotateY(180deg);
+}
+
+/*下拉列表*/
+/*
+思路：
+①下拉列表绝对定位到显示的位置
+②display:none; 隐藏
+③鼠标悬停显示 display:block;
+*/
+.nav-list {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 140px;
+    background: url("../images/subnav_bg_5cc9309.jpg") center 0 no-repeat;
+}
+
+.nav:hover > .nav-list {
+    display: block;
+}
+
+.nav-list img {
+    margin: 24px 10px 0;
+}
+
+.banner-box {
+    /*图片太大 溢出部分隐藏*/
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 784px;
+}
+
+.banner-box > img {
+    /*margin取百分比相当于父元素的宽度*/
+    margin-left: 50%;
+
+    /* 往回走自己宽度的一半*/
+    /*transform: translateX(-960px);*/
+    transform: translateX(-50%);
+
+    /*响度于自己原位置*/
+    /*position: relative;*/
+    /*往左走自己宽度的一半*/
+    /*left: -960px;*/
+}
+
+.banner-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 287px;
+    background: url("../images/bot_head_bg_450ba6b.png") repeat-x center bottom;
+}
+
+.banner-logo {
+    position: absolute;
+    left: 150px;
+    top: 143px;
+    width: 77px;
+    height: 228px;
+    background: url("../images/200.webp") no-repeat;
+    background-size: 100%;
+}
+
+.download {
+    position: relative;
+    width: 145px;
+    height: 240px;
+    padding-top: 47px;
+    background: url("../images/index_z_8ea32f7.png");
+}
+
+.download > img {
+    width: 107px;
+}
+
+.download > .line {
+    position: absolute;
+    top: 45px;
+    left: 12px;
+    width: 120px;
+    animation: move 4s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(100px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/*banner样式结束*/
+/*主体开始*/
+.wrap {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+/*主体结束*/
+/*平安世界样式开始*/
+.world {
+    position: relative;
+    width: 100%;
+    height: 495px;
+    margin-bottom: 70px;
+    /*清除margin-top的影响*/
+    overflow: hidden;
+    margin-top: 43px;
+}
+
+.world-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 54px;
+    height: 145px;
+    background: url("../images/index_z_8ea32f7.png");
+    background-position: -940px -532px;
+}
+
+.world-img {
+    width: 1180px;
+    height: 320px;
+    margin-top: 128px;
+    background: url("../images/shishen_bg_000bc91.jpg") no-repeat center top;
+}
+
+.big-img {
+    width: 940px;
+    height: 320px;
+    margin: 0 auto;
+}
+
+.big-img > a {
+    position: relative;
+    float: left;
+    width: 470px;
+    height: 320px;
+}
+
+.big-img img {
+    position: absolute;
+    top: -186px;
+    right: -140px;
+}
+
+.big-img .big-img-left {
+    position: relative;
+    left: -140px;
+}
+
+/*平安世界样式结束*/
+/*游戏攻略开始*/
+.game {
+    width: 100%;
+    height: 510px;
+    background: url("../images/stategy_bg_4def7a7.jpg") no-repeat;
+    background-position: 0 174px;
+}
+
+.game-tit {
+    float: left;
+    width: 55px;
+    height: 145px;
+    background: url("../images/index_z_8ea32f7.png");
+    background-position: -876px -532px;
+}
+
+.game-box {
+    float: right;
+    width: 1080px;
+    height: 209px;
+}
+
+.game-box > div {
+    position: relative;
+    float: left;
+    width: 340px;
+    height: 209px;
+    margin-left: 20px;
+}
+
+.game-box > div:hover span {
+    transform: translateY(-10px);
+}
+
+.game-box span {
+    position: absolute;
+    width: 40px;
+    height: 90px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background: url("../images/stategy_tit_bg_3dfaee2.png");
+    color: #000;
+    font-size: 14px;
+    line-height: 18px;
+    transition: all .4s;
+}
+
+.game-box span:first-of-type {
+    top: 0;
+    left: 18px;
+}
+
+.game-box span:last-of-type {
+    top: 22px;
+    left: 68px;
+}
+
+/*游戏攻略结束*/
+/*同人手账样式开始*/
+.tongren {
+    width: 100%;
+    height: 487px;
+    margin-bottom: 70px;
+    background: url("../images/tongren_bg_4e00ea2.jpg") no-repeat 0 bottom;
+}
+
+.tongren-tit {
+    float: left;
+    width: 53px;
+    height: 144px;
+    background: url("../images/index_z_8ea32f7.png");
+    background-position: -1003px -532px;
+}
+.tongren-box{
+    float: right;
+    width: 1062px;
+    height: 456px;
+}
+.tongren-box-left{
+    float: left;
+    width: 300px;
+    height: 456px;
+}
+.tongren-box-right{
+    float: right;
+    width: 720px;
+    height: 447px;
+}
+.tr-img{
+    width: 300px;
+    height: 415px;
+    margin-top: 41px;
+    background-image: url("../images/636343c1-1786-41f4-a666-bc70e648b7b3.png");
+    animation:change 6s linear infinite ;
+}
+@keyframes change {
+    0%{
+        background-image: url("../images/636343c1-1786-41f4-a666-bc70e648b7b3.png");
+    }
+    50%{
+        background-image: url("../images/1ecee501-bfd2-46b2-95fc-6cd88c63faa2.png");
+    }
+    100%{
+        background-image: url("../images/48a4f70a-058c-4cbf-84eb-27d09ed50f2a.jpg");
+    }
+
+}
+.tongren-box-right>div{
+    width: 220px;
+    height: 351px;
+    float: left;
+    margin-top: 40px;
+    margin-left: 20px;
+    background-image: url("../images/cdd1bfc5-5e41-49d9-9b57-1b89016aae74.jpg");
+    animation: change1 14s linear infinite;
+}
+@keyframes change1 {
+    0%{
+        background-image: url("../images/cdd1bfc5-5e41-49d9-9b57-1b89016aae74.jpg");
+    }
+    16%{
+        background-image: url("../images/9a1e3659-9eca-4c88-aa77-b276372718b6.jpg");
+    }
+    32%{
+        background-image: url("../images/cdd1bfc5-5e41-49d9-9b57-1b89016aae74.jpg");
+    }
+    48%{
+        background-image: url("../images/9a1e3659-9eca-4c88-aa77-b276372718b6.jpg");
+    }
+    64%{
+        background-image: url("../images/cdd1bfc5-5e41-49d9-9b57-1b89016aae74.jpg");
+    }
+    80%{
+        background-image: url("../images/9a1e3659-9eca-4c88-aa77-b276372718b6.jpg");
+    }
+    100%{
+        background-image: url("../images/cdd1bfc5-5e41-49d9-9b57-1b89016aae74.jpg");
+    }
+
+}
+/*同人手账样式结束*/
+
+/*试听盛宴样式开始*/
+.shiting {
+    width: 100%;
+    height: 262px;
+    padding-bottom: 47px;
+}
+
+.shiting-tit {
+    float: left;
+    width: 55px;
+    height: 146px;
+    background: url("../images/index_z_8ea32f7.png");
+    background-position: -812px -532px;
+}
+
+.st-box {
+    float: right;
+    width: 1090px;
+    height: 215px;
+    background: url("../images/shiting_bg_735f29c.jpg") no-repeat left 70px;
+}
+
+.st-box > div {
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 141px;
+    background-color: gold;
+    margin-left: 20px;
+}
+
+.st-box > div:first-child {
+    margin-left: 30px;
+}
+
+.st-name {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    background-color: #000;
+    padding: 5px 10px;
+    color: #fff;
+}
+
+/*试听盛宴样式结束*/
+/*泛娱乐样式开始*/
+.fun {
+    width: 100%;
+    height: 516px;
+    margin-bottom: 70px;
+    background: url("../images/fun_bg_99effa1.jpg") no-repeat left 175px;
+}
+
+.fun-tit {
+    float: left;
+    width: 55px;
+    height: 140px;
+    background: url("../images/index_z_8ea32f7.png");
+    background-position: -1067px -532px;
+}
+
+.fun-box {
+    float: right;
+    width: 1060px;
+    height: 516px;
+}
+
+.fun_con {
+    position: relative;
+    width: 1060px;
+    height: 536px;
+    overflow: hidden;
+}
+
+.fun-container {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 2300px;
+    height: 516px;
+
+}
+
+.fun-container > div {
+    width: 220px;
+    height: 516px;
+    float: left;
+    margin-right: 10px;
+    transition: all .4s;
+}
+
+.fun-container > div:hover {
+    transform: translateY(-20px);
+}
+
+/*泛娱乐样式结束*/
+
+
+
+
+
+
+
+
+
+
+
+
